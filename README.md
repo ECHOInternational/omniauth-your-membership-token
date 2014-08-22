@@ -5,10 +5,10 @@ This is an OmniAuth Strategy for authenticating to YourMembership implementation
 ## Installation
 
 Add these lines to your application's Gemfile:
-
-  gem 'omniauth'
-  gem 'omniauth-your-membership-token'
-
+```RUBY
+gem 'omniauth'
+gem 'omniauth-your-membership-token'
+```
 And then execute:
 
     $ bundle install
