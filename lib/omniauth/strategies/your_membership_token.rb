@@ -26,7 +26,7 @@ module OmniAuth
       def callback_phase
         # create session object
 
-        ym_session  = YourMembership::Session.new(request.env['omniauth.params']['ym_session'], 100)
+        ym_session  = YourMembership::Session.new(request.env['omniauth.params'][:ym_session], 100)
 
         fail! 'Failed To Log In' unless ym_session
         begin
