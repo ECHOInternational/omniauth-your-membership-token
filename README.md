@@ -7,7 +7,7 @@ This is an OmniAuth Strategy for authenticating to YourMembership implementation
 Add these lines to your application's Gemfile:
 
   gem 'omniauth'
-    gem 'omniauth-your-membership-token'
+  gem 'omniauth-your-membership-token'
 
 And then execute:
 
