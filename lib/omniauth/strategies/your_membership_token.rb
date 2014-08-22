@@ -1,3 +1,6 @@
+require'omniauth'
+require'your_membership'
+
 module OmniAuth
   module Strategies
     class YourMembershipToken
