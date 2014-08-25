@@ -12,21 +12,29 @@ module OmniAuth
       option :uid_field, :member_id
 
       def request_phase
+
+        # We're doing this because the callback_url is built from the options.name attribute which is built by downcasing
+        # the name of the class. This returns an uncapitalized url which Rails will not recognize as the same path as the
+        # devise controller. This is a forced way to do this and probably has a more elegant solution.
+        options.name = 'yourMembershipToken'
         # Build an Access Token
         session = YourMembership::Session.create
+        #binding.pry
         token_hash = session.createToken(:RetUrl => callback_url)
 
         # Pass the YourMembership session id to the Callback
         request.params[:ym_session] = session.to_s
-
         # Redirect to token url
         redirect token_hash['GoToUrl']
       end
 
       def callback_phase
         # create session object
+        
+        ym_session_id = request.env['omniauth.params'][:ym_session] if request.env['omniauth.params'][:ym_session]
+        ym_session_id = request.env['omniauth.params']['ym_session'] if request.env['omniauth.params']['ym_session']
 
-        ym_session  = YourMembership::Session.new(request.env['omniauth.params'][:ym_session], 100)
+        ym_session  = YourMembership::Session.new(ym_session_id, 100)
 
         fail! 'Failed To Log In' unless ym_session
         begin
