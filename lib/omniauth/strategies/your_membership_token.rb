@@ -23,7 +23,7 @@ module OmniAuth
         token_hash = session.createToken(:RetUrl => callback_url)
 
         # Pass the YourMembership session id to the Callback
-        request.params[:ym_session] = session.to_s
+        request.params['ym_session'] = session.to_s
         # Redirect to token url
         redirect token_hash['GoToUrl']
       end
@@ -31,8 +31,7 @@ module OmniAuth
       def callback_phase
         # create session object
         
-        ym_session_id = request.env['omniauth.params'][:ym_session] if request.env['omniauth.params'][:ym_session]
-        ym_session_id = request.env['omniauth.params']['ym_session'] if request.env['omniauth.params']['ym_session']
+        ym_session_id = request.env['omniauth.params']['ym_session']
 
         ym_session  = YourMembership::Session.new(ym_session_id, 100)
 
