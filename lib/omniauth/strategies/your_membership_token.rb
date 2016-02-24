@@ -7,7 +7,7 @@ module OmniAuth
       include OmniAuth::Strategy
 
       # The UID is going to be the member's API id (member_id)
-      # We'll also store the session ID 
+      # We'll also store the session ID
       option :fields, [:member_id, :ym_session]
       option :uid_field, :member_id
 
@@ -30,7 +30,7 @@ module OmniAuth
 
       def callback_phase
         # create session object
-        
+
         ym_session_id = request.env['omniauth.params']['ym_session']
 
         ym_session  = YourMembership::Session.new(ym_session_id, 100)
@@ -51,7 +51,7 @@ module OmniAuth
       uid do
         @user_id
       end
-      
+
       extra do
         {'access_token' => @access_token}
       end
