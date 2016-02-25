@@ -35,7 +35,6 @@ module OmniAuth
 
         ym_session  = YourMembership::Session.new(ym_session_id, 100)
 
-        fail! 'Failed To Log In' unless ym_session
         begin
           fail! 'Failed To Log In' unless ym_session.authenticated?
         rescue YourMembership::Error => e
