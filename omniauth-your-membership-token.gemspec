@@ -5,7 +5,7 @@ require 'omniauth/your_membership_token/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-your-membership-token"
-  spec.version       = OmniAuth::YourMembershipToken::VERSION
+  spec.version       = OmniAuth::YourMembershipToken.gem_version.to_s
   spec.authors       = ["Nate Flood"]
   spec.email         = ["nflood@echonet.org"]
   spec.summary       = %q{Omniauth Strategy For Authenticating To YourMembership}
