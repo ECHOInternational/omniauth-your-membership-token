@@ -5,7 +5,7 @@ require 'omniauth/your_membership_token/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "omniauth-your-membership-token"
-  spec.version       = OmniAuth::YourMembershipToken::VERSION
+  spec.version       = OmniAuth::YourMembershipToken.gem_version.to_s
   spec.authors       = ["Nate Flood"]
   spec.email         = ["nflood@echonet.org"]
   spec.summary       = %q{Omniauth Strategy For Authenticating To YourMembership}
@@ -18,9 +18,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "omniauth", "~> 1.2"
+  spec.add_dependency "omniauth", "~> 2"
   spec.add_dependency "your_membership", "~> 1.1"
 
-  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.add_development_dependency "bundler", "~> 2"
   spec.add_development_dependency "rake"
 end
